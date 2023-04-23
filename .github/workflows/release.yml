@@ -6,34 +6,8 @@ on:
       - main
 
 jobs:
-  kubeovn:
-    runs-on: ubuntu-latest
-    env:
-      KUBEOVN_VERSION: 1.11.3
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          repository: kubeovn/kube-ovn
-          ref: v${{ env.KUBEOVN_VERSION }}
-          path: kube-ovn
-
-      - name: Prepare the chart
-        run: |
-          mv ./kube-ovn/kubeovn-helm/ ./kubeovn/
-          mv ./kubeovn/Chart.yaml ./Chart.yaml
-          grep -v 'appVersion:' ./Chart.yaml > ./kubeovn/Chart.yaml
-          echo "appVersion: ${{ env.KUBEOVN_VERSION }}" >> ./kubeovn/Chart.yaml
-          tar -cvf kubeovn.tar kubeovn/
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: kubeovn
-          path: kubeovn.tar
-
   release:
     runs-on: ubuntu-latest
-    needs:
-      - kubeovn
 
     # Necessário para utilizar o helm/chart-releaser-action
     permissions:
@@ -45,23 +19,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: kubeovn
-
-      - name: Extract charts
-        run: |
-          mkdir charts/
-          echo 'sign: false' > cr.yaml
-          tar -xf kubeovn.tar -C charts
-          tree
-
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git add .
-          git commit -m 'relase charts'
 
       - name: Install Helm
         uses: azure/setup-helm@v3
@@ -70,6 +31,5 @@ jobs:
         uses: helm/chart-releaser-action@v1.5.0
         with:
           charts_dir: charts
-          config: cr.yaml
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
