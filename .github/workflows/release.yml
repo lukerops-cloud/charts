@@ -51,7 +51,9 @@ jobs:
 
       - name: Extract charts
         run: |
-          tar -xvf kubeovn.tar
+          mkdir charts/
+          tar -xvf -C charts/ kubeovn.tar
+          tree
 
       - name: Configure Git
         run: |
@@ -63,7 +65,5 @@ jobs:
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
-        with:
-          charts_dir: ./
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
