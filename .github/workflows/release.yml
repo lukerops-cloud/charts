@@ -52,7 +52,7 @@ jobs:
       - name: Extract charts
         run: |
           mkdir charts/
-          tar -xvf -C charts/ kubeovn.tar
+          tar -xvf kubeovn.tar -C charts 
           tree
 
       - name: Configure Git
