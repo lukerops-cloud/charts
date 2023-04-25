@@ -93,3 +93,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+folders:
+  host-config-openvswitch: /etc/origin/openvswitch
+  host-config-ovn: /etc/origin/ovn
+  local-bin: /usr/local/bin/

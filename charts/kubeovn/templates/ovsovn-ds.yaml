@@ -133,10 +133,10 @@ spec:
             path: /etc/cni/net.d
         - name: host-config-openvswitch
           hostPath:
-            path: /etc/origin/openvswitch
+            path: {{ .Values.folders.host-config-openvswitch }}
         - name: host-config-ovn
           hostPath:
-            path: /etc/origin/ovn
+            path: {{ .Values.folders.host-config-ovn }}
         - name: host-log-ovs
           hostPath:
             path: /var/log/openvswitch

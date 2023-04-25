@@ -120,7 +120,7 @@ spec:
             path: /sys
         - name: host-config-openvswitch
           hostPath:
-            path: /etc/origin/openvswitch
+            path: {{ .Values.folders.host-config-openvswitch }}
         - name: host-log-ovs
           hostPath:
             path: /var/log/openvswitch
