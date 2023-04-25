@@ -3,6 +3,16 @@ entries:
   kubeovn:
   - apiVersion: v2
     appVersion: 1.11.3
+    created: "2023-04-25T16:38:09.327385437Z"
+    description: A Helm chart for Kubernetes
+    digest: ca7c221acc5163f8414571060e650bcd0ca8b3f802b6555a91ae8be1e2308844
+    name: kubeovn
+    type: application
+    urls:
+    - https://github.com/lukerops-cloud/charts/releases/download/kubeovn-0.1.1/kubeovn-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.11.3
     created: "2023-04-23T21:16:03.55011727Z"
     description: A Helm chart for Kubernetes
     digest: 09ea9af8a965765f5743ec1172f67a575584d1b93c5e6750dd10f4b529c0404e
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/lukerops-cloud/charts/releases/download/kubeovn-0.1.0/kubeovn-0.1.0.tgz
     version: 0.1.0
-generated: "2023-04-23T21:16:03.55022597Z"
+generated: "2023-04-25T16:38:09.327398737Z"
