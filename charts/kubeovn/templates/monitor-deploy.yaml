@@ -111,10 +111,10 @@ spec:
             path: /run/ovn
         - name: host-config-openvswitch
           hostPath:
-            path: {{ .Values.folders.host-config-openvswitch }}
+            path: {{ .Values.folders.host_config_openvswitch }}
         - name: host-config-ovn
           hostPath:
-            path: {{ .Values.folders.host-config-ovn }}
+            path: {{ .Values.folders.host_config_ovn }}
         - name: host-log-ovs
           hostPath:
             path: /var/log/openvswitch

@@ -94,6 +94,6 @@ nameOverride: ""
 fullnameOverride: ""
 
 folders:
-  host-config-openvswitch: /etc/origin/openvswitch
-  host-config-ovn: /etc/origin/ovn
-  local-bin: /usr/local/bin/
+  host_config_openvswitch: /etc/origin/openvswitch
+  host_config_ovn: /etc/origin/ovn
+  local_bin: /usr/local/bin/
